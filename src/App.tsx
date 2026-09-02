@@ -115,12 +115,13 @@ function HomePage({ setPage }: { setPage: (p: Page) => void }) {
           comunitárias:
         </p>
         <div className="video-container">
-          <video controls preload="metadata">
-            <source src="img/ProjetoVale.mp4" type="video/mp4" />
-            <p style={{ color: "var(--text-secondary)", padding: "20px", textAlign: "center" }}>
-              Seu navegador não suporta a exibição de vídeos em HTML5.
-            </p>
-          </video>
+          <iframe 
+            src="https://player.vimeo.com/video/1223171814?autoplay=1&loop=1&muted=1" 
+            title="Vídeo Institucional - Projeto Vale" 
+            allow="autoplay; fullscreen; picture-in-picture" 
+            allowFullScreen
+            style={{ width: "100%", height: "100%", border: 0 }}
+          ></iframe>
         </div>
       </section>
 
