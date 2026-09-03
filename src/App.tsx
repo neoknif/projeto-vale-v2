@@ -24,8 +24,10 @@ function ProjetoValeLogo({ size = 22 }: { size?: number }) {
       />
       {/* Sprout stem rising from valley base */}
       <line
-        x1="22" y1="33"
-        x2="22" y2="20"
+        x1="22"
+        y1="33"
+        x2="22"
+        y2="20"
         stroke="#00ff66"
         strokeWidth="2"
         strokeLinecap="round"
@@ -111,16 +113,17 @@ function HomePage({ setPage }: { setPage: (p: Page) => void }) {
       <section className="card" id="apresentacao-video">
         <h2 className="heading-mono">Conheça o Projeto Vale</h2>
         <p className="body-text">
-          Assista ao vídeo institucional de apresentação e acompanhe nossas ações
-          comunitárias:
+          Assista ao vídeo institucional de apresentação e acompanhe nossas
+          ações comunitárias:
         </p>
-        <div className="video-container">
-          <iframe 
-            src="https://player.vimeo.com/video/1223171814?autoplay=1&loop=1&muted=1" 
-            title="Vídeo Institucional - Projeto Vale" 
-            allow="autoplay; fullscreen; picture-in-picture" 
-            allowFullScreen
-            style={{ width: "100%", height: "100%", border: 0 }}
+        <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
+          <iframe
+            src="https://player.vimeo.com/video/1223171814?badge=0&autopause=0&player_id=0&app_id=58479"
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+            title="ProjetoVale"
           ></iframe>
         </div>
       </section>
@@ -130,8 +133,9 @@ function HomePage({ setPage }: { setPage: (p: Page) => void }) {
         <h2 className="heading-mono">Quem Somos</h2>
         <p className="body-text">
           O Projeto Vale é uma iniciativa comunitária focada na inclusão social,
-          capacitação profissional e suporte direto a famílias no Vale do Paraíba.
-          Atuamos com transparência, empatia e compromisso real com quem mais precisa.
+          capacitação profissional e suporte direto a famílias no Vale do
+          Paraíba. Atuamos com transparência, empatia e compromisso real com
+          quem mais precisa.
         </p>
         <figure className="media-figure">
           <img
@@ -139,7 +143,8 @@ function HomePage({ setPage }: { setPage: (p: Page) => void }) {
             alt="Voluntários organizando alimentos enlatados para distribuição em ação de doação comunitária."
           />
           <figcaption className="media-figcaption">
-            Voluntários separando alimentos para distribuição — Ação Cesta Solidária.
+            Voluntários separando alimentos para distribuição — Ação Cesta
+            Solidária.
           </figcaption>
         </figure>
       </section>
@@ -149,8 +154,9 @@ function HomePage({ setPage }: { setPage: (p: Page) => void }) {
         <h2 className="heading-mono">Missão e Valores</h2>
         <p className="body-text">
           <strong style={{ color: "var(--text-primary)" }}>Missão:</strong>{" "}
-          Promover a autonomia e a transformação social por meio de ações educativas
-          e de impacto local, alcançando quem mais precisa no Vale do Paraíba.
+          Promover a autonomia e a transformação social por meio de ações
+          educativas e de impacto local, alcançando quem mais precisa no Vale do
+          Paraíba.
         </p>
 
         <div className="value-grid">
@@ -207,7 +213,8 @@ function ProjectsPage({ setPage }: { setPage: (p: Page) => void }) {
       <section className="card" id="projetos">
         <h2 className="heading-mono">Projetos Sociais Ativos</h2>
         <p className="body-text">
-          Conheça nossas iniciativas em andamento e o impacto real que estamos gerando.
+          Conheça nossas iniciativas em andamento e o impacto real que estamos
+          gerando.
         </p>
 
         <div className="articles-grid">
@@ -218,7 +225,14 @@ function ProjectsPage({ setPage }: { setPage: (p: Page) => void }) {
               Oficinas de tecnologia, lógica de programação e navegação segura
               para jovens e adultos da região.
             </p>
-            <div style={{ marginTop: "12px", display: "flex", flexDirection: "column", gap: "0" }}>
+            <div
+              style={{
+                marginTop: "12px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "0",
+              }}
+            >
               <div className="article-stat">
                 <strong>Atendidos</strong>
                 <span>+150 alunos por ciclo</span>
@@ -237,7 +251,13 @@ function ProjectsPage({ setPage }: { setPage: (p: Page) => void }) {
               Arrecadação e distribuição mensal de alimentos e itens de higiene
               para famílias cadastradas em situação de vulnerabilidade.
             </p>
-            <div style={{ marginTop: "12px", display: "flex", flexDirection: "column" }}>
+            <div
+              style={{
+                marginTop: "12px",
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
               <div className="article-stat">
                 <strong>Meta Mensal</strong>
                 <span>200 famílias beneficiadas</span>
@@ -251,14 +271,16 @@ function ProjectsPage({ setPage }: { setPage: (p: Page) => void }) {
       <section className="card" id="voluntariado">
         <h2 className="heading-mono">Programa de Voluntariado</h2>
         <p className="body-text">
-          Apoie nossas frentes de atuação doando seu tempo e conhecimento.
-          Veja as áreas disponíveis:
+          Apoie nossas frentes de atuação doando seu tempo e conhecimento. Veja
+          as áreas disponíveis:
         </p>
 
         <div className="vol-grid">
           <div className="vol-item">
             <dt>Inclusão Digital</dt>
-            <dd>Instrução de informática básica e auxílio prático em sala de aula.</dd>
+            <dd>
+              Instrução de informática básica e auxílio prático em sala de aula.
+            </dd>
           </div>
           <div className="vol-item">
             <dt>Logística e Triagem</dt>
@@ -279,8 +301,8 @@ function ProjectsPage({ setPage }: { setPage: (p: Page) => void }) {
       <section className="card" id="doacoes">
         <h2 className="heading-mono">Canais de Doação</h2>
         <p className="body-text">
-          Sua contribuição financeira garante a continuidade de nossas atividades.
-          Toda doação é registrada com transparência.
+          Sua contribuição financeira garante a continuidade de nossas
+          atividades. Toda doação é registrada com transparência.
         </p>
 
         <table className="data-table">
@@ -294,14 +316,16 @@ function ProjectsPage({ setPage }: { setPage: (p: Page) => void }) {
           <tbody>
             <tr>
               <td>
-                <span style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.8rem",
-                  color: "var(--accent-neon)",
-                  background: "var(--accent-glow)",
-                  padding: "2px 8px",
-                  borderRadius: "4px",
-                }}>
+                <span
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "0.8rem",
+                    color: "var(--accent-neon)",
+                    background: "var(--accent-glow)",
+                    padding: "2px 8px",
+                    borderRadius: "4px",
+                  }}
+                >
                   PIX · CNPJ
                 </span>
               </td>
@@ -310,19 +334,23 @@ function ProjectsPage({ setPage }: { setPage: (p: Page) => void }) {
             </tr>
             <tr>
               <td>
-                <span style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.8rem",
-                  color: "var(--text-secondary)",
-                  background: "var(--surface-hover)",
-                  padding: "2px 8px",
-                  borderRadius: "4px",
-                  border: "1px solid var(--border-color)",
-                }}>
+                <span
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "0.8rem",
+                    color: "var(--text-secondary)",
+                    background: "var(--surface-hover)",
+                    padding: "2px 8px",
+                    borderRadius: "4px",
+                    border: "1px solid var(--border-color)",
+                  }}
+                >
                   Conta Bancária
                 </span>
               </td>
-              <td className="highlight-cell">Banco 001 · Ag: 1234 · CC: 56789-0</td>
+              <td className="highlight-cell">
+                Banco 001 · Ag: 1234 · CC: 56789-0
+              </td>
               <td>Compra de Cestas Básicas</td>
             </tr>
           </tbody>
@@ -349,7 +377,9 @@ function ProjectsPage({ setPage }: { setPage: (p: Page) => void }) {
 /* ── Cadastro Page ───────────────────────────────────────── */
 function CadastroPage() {
   const [submitted, setSubmitted] = useState(false);
-  const [engajamento, setEngajamento] = useState<"voluntario" | "doador" | "">("");
+  const [engajamento, setEngajamento] = useState<"voluntario" | "doador" | "">(
+    "",
+  );
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -364,8 +394,8 @@ function CadastroPage() {
       <section className="card-flat">
         <h2 className="heading-mono">Cadastro de Voluntários e Doadores</h2>
         <p className="body-text">
-          Preencha os dados abaixo para integrar a rede de apoio do Projeto Vale.
-          Seu engajamento faz diferença real na comunidade.
+          Preencha os dados abaixo para integrar a rede de apoio do Projeto
+          Vale. Seu engajamento faz diferença real na comunidade.
         </p>
 
         {submitted && (
@@ -381,7 +411,9 @@ function CadastroPage() {
             <legend>Dados Pessoais</legend>
             <div className="form-grid">
               <div className="field-group full-width">
-                <label className="field-label" htmlFor="nome">Nome Completo</label>
+                <label className="field-label" htmlFor="nome">
+                  Nome Completo
+                </label>
                 <input
                   className="field-input"
                   type="text"
@@ -394,7 +426,9 @@ function CadastroPage() {
               </div>
 
               <div className="field-group">
-                <label className="field-label" htmlFor="cpf">CPF</label>
+                <label className="field-label" htmlFor="cpf">
+                  CPF
+                </label>
                 <input
                   className="field-input"
                   type="text"
@@ -407,7 +441,9 @@ function CadastroPage() {
               </div>
 
               <div className="field-group">
-                <label className="field-label" htmlFor="data-nascimento">Data de Nascimento</label>
+                <label className="field-label" htmlFor="data-nascimento">
+                  Data de Nascimento
+                </label>
                 <input
                   className="field-input"
                   type="date"
@@ -418,7 +454,9 @@ function CadastroPage() {
               </div>
 
               <div className="field-group">
-                <label className="field-label" htmlFor="email">E-mail</label>
+                <label className="field-label" htmlFor="email">
+                  E-mail
+                </label>
                 <input
                   className="field-input"
                   type="email"
@@ -430,7 +468,9 @@ function CadastroPage() {
               </div>
 
               <div className="field-group">
-                <label className="field-label" htmlFor="telefone">Telefone / WhatsApp</label>
+                <label className="field-label" htmlFor="telefone">
+                  Telefone / WhatsApp
+                </label>
                 <input
                   className="field-input"
                   type="tel"
@@ -449,7 +489,9 @@ function CadastroPage() {
             <legend>Endereço e Localização</legend>
             <div className="form-grid">
               <div className="field-group">
-                <label className="field-label" htmlFor="cep">CEP</label>
+                <label className="field-label" htmlFor="cep">
+                  CEP
+                </label>
                 <input
                   className="field-input"
                   type="text"
@@ -462,7 +504,9 @@ function CadastroPage() {
               </div>
 
               <div className="field-group">
-                <label className="field-label" htmlFor="cidade">Cidade</label>
+                <label className="field-label" htmlFor="cidade">
+                  Cidade
+                </label>
                 <input
                   className="field-input"
                   type="text"
@@ -474,7 +518,9 @@ function CadastroPage() {
               </div>
 
               <div className="field-group full-width">
-                <label className="field-label" htmlFor="endereco">Endereço</label>
+                <label className="field-label" htmlFor="endereco">
+                  Endereço
+                </label>
                 <input
                   className="field-input"
                   type="text"
@@ -486,8 +532,15 @@ function CadastroPage() {
               </div>
 
               <div className="field-group">
-                <label className="field-label" htmlFor="estado">Estado (UF)</label>
-                <select className="field-input" id="estado" name="estado" required>
+                <label className="field-label" htmlFor="estado">
+                  Estado (UF)
+                </label>
+                <select
+                  className="field-input"
+                  id="estado"
+                  name="estado"
+                  required
+                >
                   <option value="">Selecione o estado...</option>
                   <option value="SP">São Paulo</option>
                   <option value="RJ">Rio de Janeiro</option>
@@ -524,10 +577,18 @@ function CadastroPage() {
                   onChange={() => setEngajamento("voluntario")}
                 />
                 <span className="radio-label">
-                  <strong style={{ display: "block", color: "var(--text-primary)", marginBottom: "2px" }}>
+                  <strong
+                    style={{
+                      display: "block",
+                      color: "var(--text-primary)",
+                      marginBottom: "2px",
+                    }}
+                  >
                     Voluntário
                   </strong>
-                  <span style={{ fontSize: "0.8rem" }}>Doe seu tempo e talento</span>
+                  <span style={{ fontSize: "0.8rem" }}>
+                    Doe seu tempo e talento
+                  </span>
                 </span>
               </label>
 
@@ -543,10 +604,18 @@ function CadastroPage() {
                   onChange={() => setEngajamento("doador")}
                 />
                 <span className="radio-label">
-                  <strong style={{ display: "block", color: "var(--text-primary)", marginBottom: "2px" }}>
+                  <strong
+                    style={{
+                      display: "block",
+                      color: "var(--text-primary)",
+                      marginBottom: "2px",
+                    }}
+                  >
                     Doador
                   </strong>
-                  <span style={{ fontSize: "0.8rem" }}>Contribua financeiramente</span>
+                  <span style={{ fontSize: "0.8rem" }}>
+                    Contribua financeiramente
+                  </span>
                 </span>
               </label>
             </div>
