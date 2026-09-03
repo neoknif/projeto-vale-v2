@@ -2,6 +2,40 @@ import { useState, FormEvent } from "react";
 
 type Page = "home" | "projects" | "cadastro";
 
+/* ── Componente de Vídeo com Skeleton Loader & Lazy Load ── */
+function VideoSection() {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  return (
+    <div className={`video-container ${!isLoaded ? 'loading' : ''}`}>
+      {!isLoaded && (
+        <div className="video-skeleton">
+          <div className="skeleton-spinner"></div>
+          <span>Carregando vídeo institucional...</span>
+        </div>
+      )}
+      <iframe
+        src="https://player.vimeo.com/video/1223171814?badge=0&autopause=0&player_id=0&app_id=58479"
+        title="ProjetoVale"
+        frameBorder="0"
+        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
+        loading="lazy"
+        onLoad={() => setIsLoaded(true)}
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          opacity: isLoaded ? 1 : 0,
+          transition: "opacity 0.4s ease-in-out"
+        }}
+      ></iframe>
+    </div>
+  );
+}
+
 /* ── Logo SVG ───────────────────────────────────────────── */
 function ProjetoValeLogo({ size = 22 }: { size?: number }) {
   return (
@@ -13,7 +47,6 @@ function ProjetoValeLogo({ size = 22 }: { size?: number }) {
       xmlns="http://www.w3.org/2000/svg"
       aria-label="Projeto Vale logo"
     >
-      {/* Valley chevron — two sides of the V */}
       <path
         d="M5 9 L22 33 L39 9"
         stroke="#00ff66"
@@ -22,7 +55,6 @@ function ProjetoValeLogo({ size = 22 }: { size?: number }) {
         strokeLinejoin="round"
         fill="none"
       />
-      {/* Sprout stem rising from valley base */}
       <line
         x1="22"
         y1="33"
@@ -32,19 +64,16 @@ function ProjetoValeLogo({ size = 22 }: { size?: number }) {
         strokeWidth="2"
         strokeLinecap="round"
       />
-      {/* Left leaf — curves off the stem */}
       <path
         d="M22 26 C19 24 15 21 16 17 C18 16 21 19 22 22"
         fill="#00ff66"
         fillOpacity="0.85"
       />
-      {/* Right leaf — mirror */}
       <path
         d="M22 26 C25 24 29 21 28 17 C26 16 23 19 22 22"
         fill="#00ff66"
         fillOpacity="0.85"
       />
-      {/* Small circle at sprout tip — community node */}
       <circle cx="22" cy="17" r="2.2" fill="#00ff66" />
     </svg>
   );
@@ -60,7 +89,6 @@ function Header({ page, setPage }: { page: Page; setPage: (p: Page) => void }) {
 
   return (
     <header className="site-header">
-      {/* Logo */}
       <button className="logo-btn" onClick={() => setPage("home")}>
         <span className="logo-mark">
           <ProjetoValeLogo size={22} />
@@ -73,7 +101,6 @@ function Header({ page, setPage }: { page: Page; setPage: (p: Page) => void }) {
         </span>
       </button>
 
-      {/* Nav */}
       <nav aria-label="Navegação principal">
         <ul className="nav-list">
           {navItems.map(([key, label, isCta]) => (
@@ -109,23 +136,14 @@ function Footer() {
 function HomePage({ setPage }: { setPage: (p: Page) => void }) {
   return (
     <main style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-      {/* Apresentação + Vídeo */}
+      {/* Apresentação + Vídeo com Skeleton Loader */}
       <section className="card" id="apresentacao-video">
         <h2 className="heading-mono">Conheça o Projeto Vale</h2>
         <p className="body-text">
           Assista ao vídeo institucional de apresentação e acompanhe nossas
           ações comunitárias:
         </p>
-        <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
-          <iframe
-            src="https://player.vimeo.com/video/1223171814?badge=0&autopause=0&player_id=0&app_id=58479"
-            frameBorder="0"
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
-            title="ProjetoVale"
-          ></iframe>
-        </div>
+        <VideoSection />
       </section>
 
       {/* Quem Somos */}
@@ -209,7 +227,6 @@ function HomePage({ setPage }: { setPage: (p: Page) => void }) {
 function ProjectsPage({ setPage }: { setPage: (p: Page) => void }) {
   return (
     <main style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-      {/* Projetos Ativos */}
       <section className="card" id="projetos">
         <h2 className="heading-mono">Projetos Sociais Ativos</h2>
         <p className="body-text">
@@ -225,14 +242,7 @@ function ProjectsPage({ setPage }: { setPage: (p: Page) => void }) {
               Oficinas de tecnologia, lógica de programação e navegação segura
               para jovens e adultos da região.
             </p>
-            <div
-              style={{
-                marginTop: "12px",
-                display: "flex",
-                flexDirection: "column",
-                gap: "0",
-              }}
-            >
+            <div style={{ marginTop: "12px", display: "flex", flexDirection: "column", gap: "0" }}>
               <div className="article-stat">
                 <strong>Atendidos</strong>
                 <span>+150 alunos por ciclo</span>
@@ -251,13 +261,7 @@ function ProjectsPage({ setPage }: { setPage: (p: Page) => void }) {
               Arrecadação e distribuição mensal de alimentos e itens de higiene
               para famílias cadastradas em situação de vulnerabilidade.
             </p>
-            <div
-              style={{
-                marginTop: "12px",
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
+            <div style={{ marginTop: "12px", display: "flex", flexDirection: "column" }}>
               <div className="article-stat">
                 <strong>Meta Mensal</strong>
                 <span>200 famílias beneficiadas</span>
@@ -267,7 +271,6 @@ function ProjectsPage({ setPage }: { setPage: (p: Page) => void }) {
         </div>
       </section>
 
-      {/* Voluntariado */}
       <section className="card" id="voluntariado">
         <h2 className="heading-mono">Programa de Voluntariado</h2>
         <p className="body-text">
@@ -278,9 +281,7 @@ function ProjectsPage({ setPage }: { setPage: (p: Page) => void }) {
         <div className="vol-grid">
           <div className="vol-item">
             <dt>Inclusão Digital</dt>
-            <dd>
-              Instrução de informática básica e auxílio prático em sala de aula.
-            </dd>
+            <dd>Instrução de informática básica e auxílio prático em sala de aula.</dd>
           </div>
           <div className="vol-item">
             <dt>Logística e Triagem</dt>
@@ -297,7 +298,6 @@ function ProjectsPage({ setPage }: { setPage: (p: Page) => void }) {
         </div>
       </section>
 
-      {/* Doações */}
       <section className="card" id="doacoes">
         <h2 className="heading-mono">Canais de Doação</h2>
         <p className="body-text">
@@ -357,7 +357,6 @@ function ProjectsPage({ setPage }: { setPage: (p: Page) => void }) {
         </table>
       </section>
 
-      {/* Aside CTA */}
       <aside className="aside-cta">
         <h3 className="subheading" style={{ fontSize: "1.1rem" }}>
           Faça Parte da Mudança
@@ -377,9 +376,7 @@ function ProjectsPage({ setPage }: { setPage: (p: Page) => void }) {
 /* ── Cadastro Page ───────────────────────────────────────── */
 function CadastroPage() {
   const [submitted, setSubmitted] = useState(false);
-  const [engajamento, setEngajamento] = useState<"voluntario" | "doador" | "">(
-    "",
-  );
+  const [engajamento, setEngajamento] = useState<"voluntario" | "doador" | "">("");
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -406,7 +403,6 @@ function CadastroPage() {
         )}
 
         <form onSubmit={handleSubmit} noValidate>
-          {/* Fieldset 1: Dados Pessoais */}
           <fieldset className="form-fieldset">
             <legend>Dados Pessoais</legend>
             <div className="form-grid">
@@ -484,7 +480,6 @@ function CadastroPage() {
             </div>
           </fieldset>
 
-          {/* Fieldset 2: Endereço */}
           <fieldset className="form-fieldset">
             <legend>Endereço e Localização</legend>
             <div className="form-grid">
@@ -535,12 +530,7 @@ function CadastroPage() {
                 <label className="field-label" htmlFor="estado">
                   Estado (UF)
                 </label>
-                <select
-                  className="field-input"
-                  id="estado"
-                  name="estado"
-                  required
-                >
+                <select className="field-input" id="estado" name="estado" required>
                   <option value="">Selecione o estado...</option>
                   <option value="SP">São Paulo</option>
                   <option value="RJ">Rio de Janeiro</option>
@@ -557,7 +547,6 @@ function CadastroPage() {
             </div>
           </fieldset>
 
-          {/* Fieldset 3: Perfil de Engajamento */}
           <fieldset className="form-fieldset">
             <legend>Perfil de Engajamento</legend>
             <p className="body-text" style={{ marginBottom: "12px" }}>
@@ -577,18 +566,10 @@ function CadastroPage() {
                   onChange={() => setEngajamento("voluntario")}
                 />
                 <span className="radio-label">
-                  <strong
-                    style={{
-                      display: "block",
-                      color: "var(--text-primary)",
-                      marginBottom: "2px",
-                    }}
-                  >
+                  <strong style={{ display: "block", color: "var(--text-primary)", marginBottom: "2px" }}>
                     Voluntário
                   </strong>
-                  <span style={{ fontSize: "0.8rem" }}>
-                    Doe seu tempo e talento
-                  </span>
+                  <span style={{ fontSize: "0.8rem" }}>Doe seu tempo e talento</span>
                 </span>
               </label>
 
@@ -604,18 +585,10 @@ function CadastroPage() {
                   onChange={() => setEngajamento("doador")}
                 />
                 <span className="radio-label">
-                  <strong
-                    style={{
-                      display: "block",
-                      color: "var(--text-primary)",
-                      marginBottom: "2px",
-                    }}
-                  >
+                  <strong style={{ display: "block", color: "var(--text-primary)", marginBottom: "2px" }}>
                     Doador
                   </strong>
-                  <span style={{ fontSize: "0.8rem" }}>
-                    Contribua financeiramente
-                  </span>
+                  <span style={{ fontSize: "0.8rem" }}>Contribua financeiramente</span>
                 </span>
               </label>
             </div>
